@@ -1,0 +1,69 @@
+#include <stdio.h>
+
+int candidate1Votes = 0;
+int candidate2Votes = 0;
+
+void castVote() {
+    int choice;
+    printf("\nVote for your favorite candidate:\n");
+    printf("1. Candidate 1\n");
+    printf("2. Candidate 2\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+        case 1:
+            candidate1Votes++;
+            printf("You voted for Candidate 1!\n");
+            break;
+        case 2:
+            candidate2Votes++;
+            printf("You voted for Candidate 2!\n");
+            break;
+        default:
+            printf("Invalid choice. Try again.\n");
+    }
+}
+
+void displayResults() {
+    printf("\n--- Voting Results ---\n");
+    printf("Candidate 1: %d votes\n", candidate1Votes);
+    printf("Candidate 2: %d votes\n", candidate2Votes);
+
+    if (candidate1Votes > candidate2Votes) {
+        printf("Candidate 1 is the winner!\n");
+    } else if (candidate2Votes > candidate1Votes) {
+        printf("Candidate 2 is the winner!\n");
+    } else {
+        printf("It's a tie!\n");
+    }
+}
+
+int main() {
+    int choice;
+
+    printf("=== Simple Online Voting System ===\n");
+    do {
+        printf("\n1. Cast Vote\n");
+        printf("2. View Results\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                castVote();
+                break;
+            case 2:
+                displayResults();
+                break;
+            case 3:
+                printf("Thank you for using the voting system!\n");
+                break;
+            default:
+                printf("Invalid choice. Try again.\n");
+        }
+    } while (choice != 3);
+
+    return 0;
+}
